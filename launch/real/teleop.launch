@@ -8,6 +8,7 @@
   <arg name="teleop" default="joy" />
   <arg name="rosbag" default="false" />
   <arg name="use_velodyne" default="true" />
+  <arg name="use_imu" default="true" />
 
   <include file="$(find oit_minibot_heavy_v5)/launch/include/devices.launch">
     <arg name="roboclaw_settings" value="$(arg roboclaw_settings)" />
@@ -22,6 +23,8 @@
   </include>
 
   <include if="$(arg use_velodyne)" file="$(find oit_minibot_heavy_v5)/launch/include/velodyne.launch" />
+
+  <include if="$(arg use_imu)" file="$(find oit_minibot_heavy_v5)/launch/include/imu.launch" />
 
   <include if="$(arg rosbag)" file="$(find oit_minibot_heavy_v5)/launch/record_rosbag.launch" required="true"/>
 </launch>
