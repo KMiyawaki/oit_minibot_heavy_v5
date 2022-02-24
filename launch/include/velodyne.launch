@@ -1,0 +1,7 @@
+<launch>
+    <arg name="use_pointcloud" default="true" />
+    <node pkg="tf" type="static_transform_publisher" name="velodyne2base_link" args="-0.095 0 0.66762 0 0 0 base_link velodyne 100" />
+
+    <include if="$(arg use_pointcloud)" file="$(find velodyne_pointcloud)/launch/VLP16_points.launch">
+    </include>
+</launch>
