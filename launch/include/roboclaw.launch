@@ -7,7 +7,7 @@
   </node>
   <node pkg="oit_roboclaw_driver" type="oit_roboclaw_2_wheels.py" name="oit_roboclaw_2_wheels" output="screen">
     <param name="~process_rate" value="20"/>
-    <param name="~tread" value="0.393"/>
+    <param name="~tread" value="0.4594"/>
     <!-- 100:1 Metal Gearmotor 37Dx73L mm 12V with 64 CPR Encoder -->
     <!-- Ticks: 102.08 * 64 = 6533.12 -->
     <!-- Wheel: 0.2 * Pi = 0.6283185307179586 -->
