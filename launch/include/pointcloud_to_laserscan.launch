@@ -11,6 +11,7 @@
   <node pkg="pointcloud_to_laserscan" type="pointcloud_to_laserscan_node" name="pointcloud_to_laserscan" output="screen" >
     <remap from="cloud_in" to="$(arg cloud_in)" />
     <!--remap from="scan" to="pointcloud_scan" /-->
+    <remap from="scan" to="base_scan" />
     <param name="max_height" value="$(arg max_height)" />
     <param name="min_height" value="$(arg min_height)" />
     <param name="angle_max" value="$(arg angle_max)" />
