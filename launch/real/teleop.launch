@@ -24,7 +24,7 @@
 
   <include if="$(arg use_velodyne)" file="$(find oit_minibot_heavy_v5)/launch/include/velodyne.launch" />
 
-  <include if="$(arg use_imu)" file="$(find oit_minibot_heavy_v5)/launch/include/imu.launch" />
+  <include if="$(arg use_imu)" file="$(find oit_minibot_heavy_v5)/launch/include/wit_motion.launch" />
 
   <include if="$(arg rosbag)" file="$(find oit_minibot_heavy_v5)/launch/record_rosbag.launch" required="true"/>
 </launch>
