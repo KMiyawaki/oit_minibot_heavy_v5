@@ -5,10 +5,12 @@
   <arg name="ymax" default="5"/>
   <arg name="rosbag" default="false" />
   <arg name="use_scan" default="true" />
+  <arg name="use_imu" default="false" />
 
   <include file="$(find oit_minibot_heavy_v5)/launch/real/teleop.launch">
     <arg name="rviz_conf" value="$(find oit_minibot_heavy_v5)/config/rviz/mapping.rviz" />
     <arg name="use_scan" value="$(arg use_scan)" />
+    <arg name="use_imu" value="$(arg use_imu)" />
   </include>
 
   <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen">
