@@ -7,9 +7,9 @@
 
     <group if="$(arg use_scan)">
         <include file="$(find oit_minibot_heavy_v5)/launch/include/pointcloud_to_laserscan.launch" />
-        <!--<node pkg="laser_filters" type="scan_to_scan_filter_chain" name="laser_filter" output="screen">
+        <node pkg="laser_filters" type="scan_to_scan_filter_chain" name="laser_filter" output="screen">
             <rosparam command="load" file="$(find oit_minibot_heavy_v5)/config/laser_filter.yaml" />
             <remap from="scan_filtered" to="base_scan" />
-        </node>-->
+        </node>
     </group>
 </launch>
