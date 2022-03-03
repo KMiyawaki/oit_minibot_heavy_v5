@@ -8,6 +8,7 @@
   <arg name="ymin" default="-5"/>
   <arg name="ymax" default="5"/>
   <arg name="delta" default="0.05"/>
+  <arg name="use_scan" default="true"/>
 
   <include file="$(find oit_minibot_heavy_v5)/launch/play_rosbag.launch">
     <arg name="bag_path" value="$(arg bag_path)" />
@@ -15,7 +16,6 @@
     <arg name="rviz_conf" value="$(arg rviz_conf)" />
     <arg name="rate" value="$(arg rate)" />
   </include>
-  <node name="remvoe_map_frame" pkg="oit_minibot_heavy_v5" type="remove_map_frame.py" required="true" />
   <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen" required="true">
     <remap from="scan" to="base_scan" />
     <param name="xmin" value="$(arg xmin)" />
@@ -24,4 +24,13 @@
     <param name="ymax" value="$(arg ymax)" />
     <param name="delta" value="$(arg delta)" />
   </node>
+
+  <group if="$(arg use_scan)">
+    <include file="$(find oit_minibot_heavy_v5)/launch/include/pointcloud_to_laserscan.launch" />
+      <node pkg="laser_filters" type="scan_to_scan_filter_chain" name="laser_filter" output="screen">
+        <rosparam command="load" file="$(find oit_minibot_heavy_v5)/config/laser_filter.yaml" />
+        <remap from="scan_filtered" to="base_scan" />
+      </node>
+  </group>
+  
 </launch>
