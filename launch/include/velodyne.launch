@@ -1,15 +1,12 @@
 <launch>
     <arg name="use_scan" default="false" />
+    <arg name="use_filter" default="false" />
     
     <node pkg="tf" type="static_transform_publisher" name="velodyne2base_link" args="-0.095 0 0.66762 0 0 0 base_link velodyne 100" />
 
     <include file="$(find velodyne_pointcloud)/launch/VLP16_points.launch" />
 
-    <group if="$(arg use_scan)">
-        <include file="$(find oit_minibot_heavy_v5)/launch/include/pointcloud_to_laserscan.launch" />
-        <!--node pkg="laser_filters" type="scan_to_scan_filter_chain" name="laser_filter" output="screen">
-            <rosparam command="load" file="$(find oit_minibot_heavy_v5)/config/laser_filter.yaml" />
-            <remap from="scan_filtered" to="base_scan" />
-        </node-->
-    </group>
+    <include if="$(arg use_scan)" file="$(find oit_minibot_heavy_v5)/launch/include/pointcloud_to_laserscan.launch">
+        <param name="use_filter" value="$(arg use_filter)" />
+    </include>
 </launch>

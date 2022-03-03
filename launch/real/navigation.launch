@@ -11,12 +11,14 @@
   <arg name="use_rplidar" default="false" />
   <arg name="use_scan" default="true" />
   <arg name="use_imu" default="true" />
+  <arg name="use_filter" default="true" />
 
   <include file="$(find oit_minibot_heavy_v5)/launch/include/devices.launch">
     <arg name="rviz_conf" value="$(find oit_minibot_heavy_v5)/config/rviz/navigation.rviz" />
     <arg name="use_rplidar" value="$(arg use_rplidar)" />
     <arg name="use_scan" value="$(arg use_scan)" />
     <arg name="use_imu" value="$(arg use_imu)" />
+    <arg name="use_filter" value="$(arg use_filter)" />
   </include>
 
   <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_path)" respawn="false" />

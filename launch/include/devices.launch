@@ -7,6 +7,7 @@
   <arg name="use_velodyne" default="true" />
   <arg name="use_scan" default="true" />
   <arg name="use_imu" default="true" />
+  <arg name="use_filter" default="false" />
 
   <include file="$(find oit_minibot_heavy_v5)/launch/include/roboclaw.launch">
     <arg name="roboclaw_settings" value="$(arg roboclaw_settings)" />
@@ -17,6 +18,7 @@
 
   <include if="$(arg use_velodyne)" file="$(find oit_minibot_heavy_v5)/launch/include/velodyne.launch">
     <arg name="use_scan" value="$(arg use_scan)" />
+    <arg name="use_filter" value="$(arg use_filter)" />
   </include>
 
   <include if="$(arg use_imu)" file="$(find oit_minibot_heavy_v5)/launch/include/wit_motion.launch" />
