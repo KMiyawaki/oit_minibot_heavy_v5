@@ -19,7 +19,7 @@
     <arg name="use_scan" value="$(arg use_scan)" />
   </include>
 
-  <include if="$(arg use_imu)" file="$(find oit_minibot_heavy_v5)/launch/include/imu.launch" />
+  <include if="$(arg use_imu)" file="$(find oit_minibot_heavy_v5)/launch/include/wit_motion.launch" />
 
   <include file="$(find oit_minibot_heavy_v5)/launch/include/state_publisher.launch"/>
 
