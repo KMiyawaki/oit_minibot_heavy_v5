@@ -12,7 +12,6 @@
 
   <include file="$(find oit_minibot_heavy_v5)/launch/play_rosbag.launch">
     <arg name="bag_path" value="$(arg bag_path)" />
-    <arg name="tf_remap" value="/tf_raw" />
     <arg name="rviz_conf" value="$(arg rviz_conf)" />
     <arg name="rate" value="$(arg rate)" />
   </include>
