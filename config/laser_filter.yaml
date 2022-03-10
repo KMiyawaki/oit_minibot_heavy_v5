@@ -2,7 +2,7 @@ scan_filter_chain:
 - name: box
   type: laser_filters/LaserScanBoxFilter
   params:
-    box_frame: base_laser_link
+    box_frame: rplidar
     min_x: -0.1
     max_x: 0.1
     min_y: -0.1
