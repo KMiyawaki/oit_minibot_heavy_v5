@@ -1,5 +1,7 @@
 <launch>
+  <arg name="use_filter" default="false" />
   <node name="rplidarNode" pkg="rplidar_ros" type="rplidarNode" output="screen">
+    <remap from="scan" to="rplidar_scan" />
     <param name="serial_port" type="string" value="/dev/serial/by-id/usb-Silicon_Labs_CP2102_USB_to_UART_Bridge_Controller_0001-if00-port0"/>
     <param name="serial_baudrate" type="int" value="256000"/>
     <!--A3 -->
@@ -10,7 +12,10 @@
   </node>
 
   <node pkg="laser_filters" type="scan_to_scan_filter_chain" name="laser_filter" output="screen">
+    <remap from="scan" to="rplidar_scan" />
     <rosparam command="load" file="$(find oit_minibot_heavy_v5)/config/laser_filter.yaml" />
     <remap from="scan_filtered" to="base_scan" />
   </node>
+  
+  <node pkg="tf" type="static_transform_publisher" name="rplidar2base_link" args="0.185 0 0.210 0 0 0 base_link velodyne 100" />
 </launch>
