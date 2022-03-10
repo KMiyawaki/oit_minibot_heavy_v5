@@ -17,5 +17,5 @@
     <remap from="scan_filtered" to="base_scan" />
   </node>
   
-  <node pkg="tf" type="static_transform_publisher" name="rplidar2base_link" args="0.185 0 0.210 0 0 0 base_link velodyne 100" />
+  <node pkg="tf" type="static_transform_publisher" name="rplidar2base_link" args="0.185 0 0.210 0 0 0 base_link rplidar 100" />
 </launch>
